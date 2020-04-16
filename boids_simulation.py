@@ -1,3 +1,4 @@
+# This code is adapted for our purposes from original code online:
 # -----------------------------------------------------------------------------
 # From Pytnon to Numpy
 # Copyright (2017) Nicolas P. Rougier - BSD license

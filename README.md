@@ -24,11 +24,15 @@ The forces and radii are parameters that alter the motion of the boids based on 
 
 "betti_generator.py" is code that takes in a dmsfile and generates a betti-0 function for that DMS. It currently has one set of initial parameters:
 
+```
 python betti_generator.py dmsfile bettifile num_points start_threshold end_threshold spacing
+```
 
 "dmsfile" and "bettifile" are the names of the files containing the input DMS and the output betti-0 function, respectively. num_points is the number of points in the DMS (will soon be unecessary to input manually). The threshold and spacing inputs determine the discretization values to be used for the Vietoris-Rips filtration when generating the betti-0 function. For example, with input:
 
+```
 python betti_generator.py dmsfile bettifile num_points 0 50 5
+```
 
 The VR distance thresholds for finding betti-0 numbers would be taken as 0, 5, 10, ..., 50
 The code is currently built so that the DMS file it reads in is a dynamic point cloud and then it computes the time series of distance matrices using Euclidean distance in the function "get_dist". This "get_dist" function is the one to change should the DMS be based on other metrics. In the future, additional functionality will be added so the user could input either a DMS as a dynamic point cloud or as a time series of distance matrices already. Of note is that the "boids_simulation.py" output is a dynamic point cloud, as the current "betti_generator.py" code is setup to handle.

@@ -5,7 +5,9 @@ The code is authored by Nate Clause (The Ohio State University Department of Mat
 
 All of the codes are currently set up to be run from a command line, for example, the current approach to run "betti_generator.py" would be to enter command line or the terminal in a python ide and write something such as:
 
+```
 python betti_generator.py dmsfile bettifile 40 0 50 5
+```
 
 All of these codes have portions at the top of main where the user can change the approach to how these functions are called/executed to another method as desired. Later, code will also be posted that exemplifies a larger-scale version with parallelization for generating betti-0 functions as well as computing erosion distance between a large number of betti-0 functions.
 

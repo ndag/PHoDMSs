@@ -14,11 +14,15 @@ All of these codes have portions at the top of main where the user can change th
 "boids_simulation.py" is code that uses a standard flocking boids model to generate dynamic metric spaces (DMS), and is added to give the user an example of how to generate DMS, as well as to have easily-made DMS available to test with the other codes.
 This code has two sets of initial parameters (again, this can be changed at the top of main):
 
+```
 python boids_simulation.py num_points separation_force alignment_force cohesion_force dmsfile
+```
 
 or:
 
+```
 python boids_simulation.py num_points separation_force separation_radius alignment_force alignment_radius cohesion_force cohesion_radius dmsfile
+```
 
 The forces and radii are parameters that alter the motion of the boids based on the rules based on the rules of the model. For a general explanation of the flocking boids model, see https://en.wikipedia.org/wiki/Boids. Then dmsfile is the filename that the DMS data is saved out to.
 

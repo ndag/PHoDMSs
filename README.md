@@ -1,7 +1,6 @@
 # Spatiotemporal Persistent Homology for Dynamic Data
-The code in this repository works to fill out the computational pipeline of taking in a discrete dynamic metric space (DMS), generating a spatiotemporal Betti-0 function for it, and then compute erosion distance between these Betti-0 functions. This is based on theoretical work by Woojin Kim and Facundo Memoli of The Ohio State University Department of Mathematics. The details can be found in the paper: "Spatiotemporal Persistent Homology for Dynamic Metric
-Spaces", published in Discrete & Computational Geometry, 2020, link: https://link.springer.com/article/10.1007/s00454-019-00168-w . 
-The code is authored by Nate Clause (The Ohio State University Department of Mathematics) in collaboration with Woojin Kim.
+The code in this repository works to fill out the computational pipeline of taking in a discrete dynamic metric space (DMS), generating a spatiotemporal Betti-0 function for it, and then compute erosion distance between these Betti-0 functions. This is based on theoretical work by [Woojin Kim](https://wj-kim.com) and [Facundo Mémoli](https://people.math.osu.edu/memolitechera.1/) of The Ohio State University Department of Mathematics. The details can be found in the paper: ["Spatiotemporal Persistent Homology for Dynamic Metric Spaces"](https://link.springer.com/article/10.1007/s00454-019-00168-w), published in Discrete & Computational Geometry, 2020.
+The code is authored by [Nate Clause](https://math.osu.edu/people/clause.15), a Math Ph.D. student at The Ohio State University, in collaboration with [Woojin Kim](https://wj-kim.com).
 
 ## Generating DMSs from Boids model
 "boids_simulation.py" is code that uses a standard flocking boids model to generate DMSs, and is added to give the user an example of how to generate DMS, as well as to have easily-made DMS available to test with the other codes.

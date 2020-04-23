@@ -1,5 +1,13 @@
 # Spatiotemporal Persistent Homology for Dynamic Data
-The code in this repository works to fill out the computational pipeline of taking in a dynamic metric space (DMS), a time series of distance functions over a fixed underlying set, generating a spatiotemporal Betti-0 function for it, and then compute erosion distance between these Betti-0 functions. This is based on theoretical work by [Woojin Kim](https://wj-kim.com) and [Facundo Mémoli](https://people.math.osu.edu/memolitechera.1/) at Ohio State. The details can be found in the paper: [*Spatiotemporal Persistent Homology for Dynamic Metric Spaces*](https://link.springer.com/article/10.1007/s00454-019-00168-w), published in Discrete & Computational Geometry, 2020.
+
+A **dynamic metric space (DMS)** is a time series of distance functions over a fixed underlying set. Instance of DMSs include collective behaviors of animals (a flock of birds or a school of fish), and social networks in the human sphere.
+
+The code in this repository works to 
+1. Compute the **spatiotemporal persistent Betti-0 function** of **DMSs**, and in turn
+2. Quantify the dissimilarity between two DMSs, based on their **spatiotemporal persistent topology**. For this, we make use of a slight generalization of [the erosion distance](https://link.springer.com/article/10.1007/s41468-018-0012-6) by Amit Patel.
+
+<!--This code fill out the computational pipeline of taking in a dynamic metric space (DMS) generating a spatiotemporal Betti-0 function for it, and then compute erosion distance between these Betti-0 functions.--> 
+This code is based on theoretical work by [Woojin Kim](https://wj-kim.com) and [Facundo Mémoli](https://people.math.osu.edu/memolitechera.1/) at Ohio State. The details can be found in the paper: [*Spatiotemporal Persistent Homology for Dynamic Metric Spaces*](https://link.springer.com/article/10.1007/s00454-019-00168-w), published in Discrete & Computational Geometry, 2020.
 The code is authored by [Nate Clause](https://math.osu.edu/people/clause.15), a Math Ph.D. student at The Ohio State University, in collaboration with [Woojin Kim](https://wj-kim.com).
 
 ## Generating DMSs from Boids model

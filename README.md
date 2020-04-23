@@ -15,13 +15,11 @@ The code is based on theoretical work by [Woojin Kim](https://wj-kim.com) and [F
 The code is authored by [Nate Clause](https://math.osu.edu/people/clause.15), a Math Ph.D. student at The Ohio State University, in collaboration with [Woojin Kim](https://wj-kim.com).
 
 ## Spatiotemporal Betti-0 function computation
-All of the codes are currently set up to be run from a command line, for example, the current approach to run "betti_generator.py" would be to enter command line or the terminal in a python IDE and write something such as:
-
+<!--All of the codes are currently set up to be run from a command line, for example, the current approach to run "betti_generator.py" would be to enter command line or the terminal in a python IDE and write something such as:
 ```
 python betti_generator.py [dmsfile] [bettifile] 40 0 50 5
 ```
-
-All of these codes have portions at the top of main where the user can change the approach to how these functions are called/executed to another method as desired. Later, code will also be posted that exemplifies a larger-scale version with parallelization for generating Betti-0 functions as well as computing erosion distance between a large number of Betti-0 functions.
+All of these codes have portions at the top of main where the user can change the approach to how these functions are called/executed to another method as desired. Later, code will also be posted that exemplifies a larger-scale version with parallelization for generating Betti-0 functions as well as computing erosion distance between a large number of Betti-0 functions. -->
 
 "betti_generator.py" is code that takes in a DMS file and generates a Betti-0 function for that DMS. It currently has one set of initial parameters:
 

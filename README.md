@@ -27,13 +27,13 @@ All of these codes have portions at the top of main where the user can change th
 python betti_generator.py [dmsfile] [bettifile] [num_points] [start_threshold] [end_threshold] [spacing]
 ```
 
-[dmsfile] and [bettifile] are the names of the files containing the input DMS and the output Betti-0 function, respectively. [num_points] is the number of points in the DMS (will soon be unecessary to input manually). The threshold and spacing inputs determine the discretization values to be used for the Vietoris-Rips filtration when generating the Betti-0 function. For example, with the input:
+[dmsfile] and [bettifile] are the names of the files containing the input DMS and the output Betti-0 function, respectively. [num_points] is the number of points in the DMS (will soon be unecessary to input manually). The threshold and spacing inputs determine the discretization values to be used for the Vietoris-Rips filtration when generating the Betti-0 function. Consider the following example input:
 
 ```
 python betti_generator.py DMS1.txt Betti.txt 30 0 50 5
 ```
 
-for computing the Betti-0 function of **DMS1.txt**, the Vietoris-Rips complexes will be computed at the thresholds  0 (=**start_threshold**), 5, 10, ..., 50 (=**end_threshold**) and the Betti-0 function will be saved into a file named **Betti.txt**.
+Then, for computing the Betti-0 function of **DMS1.txt**, the Vietoris-Rips complexes will be computed at the thresholds  0 (=**start_threshold**), 5, 10, ..., 50 (=**end_threshold**) and the Betti-0 function will be saved into a file named **Betti.txt**.
 The code is currently built so that the DMS file it reads in is a dynamic point cloud and then it computes the time series of distance matrices using Euclidean distance in the function "get_dist". This "get_dist" function is the one to change should the DMS be based on other metrics. In the future, additional functionality will be added so the user could input either a DMS as a dynamic point cloud or as a time series of distance matrices already. Of note is that the "boids_simulation.py" output is a dynamic point cloud, as the current "betti_generator.py" code is setup to handle.
 
 ## Generating DMSs from Boids model

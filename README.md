@@ -24,17 +24,27 @@ All of these codes have portions at the top of main where the user can change th
 "betti_generator.py" is code that takes in a DMS file and generates a Betti-0 function for that DMS. It currently has one set of initial parameters:
 
 ```
-python betti_generator.py [dmsfile] [bettifile] [num_points] [start_threshold] [end_threshold] [spacing]
+python betti_generator.py [dmsfile] [bettifile] [start_threshold] [end_threshold] [spacing]
 ```
 
-[dmsfile] and [bettifile] are the names of the files containing the input DMS and the output Betti-0 function, respectively. [num_points] is the number of points in the DMS (will soon be unecessary to input manually). The threshold and spacing inputs determine the discretization values to be used for the Vietoris-Rips filtration when generating the Betti-0 function. Consider the following example input:
+[dmsfile] and [bettifile] are the names of the files containing the input DMS and the output Betti-0 function, respectively. The threshold and spacing inputs determine the discretization values to be used for the Vietoris-Rips filtration when generating the Betti-0 function. Consider the following example input:
 
 ```
-python betti_generator.py DMS1.txt Betti.txt 30 0 50 5
+python betti_generator.py DMS1.txt Betti.txt 0 50 5
 ```
 
 Then, for computing the Betti-0 function of **DMS1.txt**, the Vietoris-Rips complexes will be computed at the thresholds  0 (=**start_threshold**), 5, 10, ..., 50 (=**end_threshold**) and the Betti-0 function will be saved into a file named **Betti.txt**.
 The code is currently built so that the DMS file it reads in is a dynamic point cloud and then it computes the time series of distance matrices using Euclidean distance in the function "get_dist". This "get_dist" function is the one to change should the DMS be based on other metrics. In the future, additional functionality will be added so the user could input either a DMS as a dynamic point cloud or as a time series of distance matrices already. Of note is that the "boids_simulation.py" output is a dynamic point cloud, as the current "betti_generator.py" code is setup to handle.
+
+## Computing Erosion distance between Betti-0 functions. 
+There are currently two files codes which can be used to perform this task, "erosion_distance.py" and "same_size_erosion_distance.py". These will soon be merged into a single file. At this time, if the user has wants to compute erosion distance between two betti-0 functions of the same size (say, both 10 by 20 by 20 arrays), we recommend using "same_size_erosion_distance.py". The code in "erosion_distance.py" can break if the thresholds for the Rips parameter in generating the betti-0 functions did not go high enough so that the "top-level" of the betti-0 functions are filled with only 1s, whereas the recommended code can deal with this situation, but currently only when the betti-0 functions are of the same size. We expect by the end of April 30th, 2020 that this issue will be resolved, and these two erosion distance computation codes will be merged back together into just "erosion_distance.py", and with some further runtime optimizations implemented.
+
+"same_size_erosion_distance.py" is code that takes in two betti-0 function files and computes the erosion distance between them. It currently has one set of initial parameters:
+
+```
+python same_size_erosion_distance.py [bettifile1] [bettifile2] 
+```
+With this input, the code would compute the erosion distance of the two betti-0 functions and display this result.
 
 ## Generating DMSs from Boids model
 "boids_simulation.py" is code that uses a standard flocking boids model to generate DMSs, and is added to give the user an example of how to generate DMS, as well as to have easily-made DMS available to test with the other codes.

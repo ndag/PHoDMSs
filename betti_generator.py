@@ -47,25 +47,26 @@ def get_points(file, numpoints):
 
 if __name__ == '__main__':
 
-	if len(sys.argv) == 7:
+	if len(sys.argv) == 6:
 		position_file = str(sys.argv[1])
 		betti_file = str(sys.argv[2])
-		num_points = int(sys.argv[3])
-		start_thresh = int(sys.argv[4])
-		end_thresh = int(sys.argv[5])
-		spacing = int(sys.argv[6])
+		start_thresh = int(sys.argv[3])
+		end_thresh = int(sys.argv[4])
+		spacing = int(sys.argv[5])
 	else:
 		print('Please pass arguments:')
-		print('position filename, output filename, number of points, starting Rips threshold, ending Rips threshold, spacing')
+		print('position filename, output filename, starting Rips threshold, ending Rips threshold, spacing')
 		exit()
 
 	points = []
-	num_times = 0
+	num_times = -1
 	for line in open(position_file).readlines():
 		num_times += 1
+	
+	myfile = open(position_file)
+	line1 = myfile.readline()
+	num_points =  int(line1)
 	num_times = int(num_times/num_points)
-	print(num_times)
-	myfile = open(position_file) 
 	for i in range(num_times):
 		points.append(get_points(myfile,num_points))
 	myfile.close()
@@ -73,7 +74,6 @@ if __name__ == '__main__':
 	thresholds = [i for i in range(start_thresh, end_thresh+1, spacing)]
 	times = [i for i in range(start_thresh,start_thresh+1+num_times*spacing,spacing)] 
 
-	#bettiarray = np.zeros((len(thresholds),len(times),len(times)))
 	useddists = [get_dist(points[i]) for i in range(0,num_times,50)]
 	useddists = np.array(useddists)
 	bettiarray = np.zeros((len(thresholds),len(useddists),len(useddists)))
@@ -94,12 +94,8 @@ if __name__ == '__main__':
 			ba = np.array(ba)
 			bettiarray[:,row,n-diag-row-2]=ba
 	
-	infostring = str(num_points) + ' '
-	infostring = infostring.join(str(start_thresh) + ' ')
-	infostring = infostring.join(str(end_thresh) + ' ')
-	infostring = infostring.join(str(spacing) + ' ')
-	infostring = str(num_points) + ' ' + str(start_thresh) + ' ' + str(end_thresh) + ' ' + str(spacing) 
-	print(infostring)
+	infostring = str(len(useddists)) + ' ' + str(start_thresh) + ' ' + str(end_thresh) + ' ' + str(spacing) 
+	
 	with open(betti_file, 'w') as outfile:
 		outfile.write(infostring + '\n')
 		for data_slice in bettiarray:

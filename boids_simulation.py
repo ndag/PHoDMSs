@@ -227,6 +227,8 @@ if __name__ == '__main__':
     if os.path.exists(filename):
         os.remove(filename)
 
+    with open(filename, 'w') as outfile:
+        outfile.write(str(n) + '\n')
     width, height = 500, 250
     flock = Flock(n)
     collection = MarkerCollection(n)

@@ -14,7 +14,7 @@ The code is based on theoretical work by [Woojin Kim](https://wj-kim.com) and [F
 <!--. The details can be found in the paper: [*Spatiotemporal Persistent Homology for Dynamic Metric Spaces*](https://link.springer.com/article/10.1007/s00454-019-00168-w), published in Discrete & Computational Geometry, 2020.-->
 The code is authored by [Nate Clause](https://math.osu.edu/people/clause.15), a Math Ph.D. student at The Ohio State University, in collaboration with [Woojin Kim](https://wj-kim.com).
 
-## Spatiotemporal Betti-0 function computation
+## Computing Spatiotemporal Betti-0 function
 <!--All of the codes are currently set up to be run from a command line, for example, the current approach to run "betti_generator.py" would be to enter command line or the terminal in a python IDE and write something such as:
 ```
 python betti_generator.py [dmsfile] [bettifile] 40 0 50 5

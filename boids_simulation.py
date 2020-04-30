@@ -181,8 +181,7 @@ def update(*args):
     f = open(filename, "a")
     np.savetxt(f, flock.position, fmt='%.8f', newline='\n')
     f.close()
-    #with open('positions_data.txt', 'wb') as f:
-    #    print f
+
 
 
     # Trace updating
@@ -226,6 +225,8 @@ if __name__ == '__main__':
 
     if os.path.exists(filename):
         os.remove(filename)
+    if os.path.exists(filename+"_animation.mp4"):
+        os.remove(filename+"_animation.mp4")
 
     with open(filename, 'w') as outfile:
         outfile.write(str(n) + '\n')
@@ -244,5 +245,8 @@ if __name__ == '__main__':
     ax.set_yticks([])
 
 
-    animation = FuncAnimation(fig, update, interval=15, frames=999, repeat=False)
+    animation = FuncAnimation(fig, update, interval=50, frames=999, repeat=False)
     plt.show()
+    animation.save(filename + '_animation.mp4', fps=20)
+    print("Animation saved")
+

@@ -69,7 +69,6 @@ class Flock:
     def run(self):
 
         global distance, counter, sep, ali, coh
-        #counter = counter + 1
 
         position = self.position
         velocity = self.velocity
@@ -78,9 +77,9 @@ class Flock:
         max_acceleration = self.max_acceleration
         n = len(position)
 
-        dx = np.subtract.outer(position[:, 0], position[:, 0])
+        dx = np.absolute(np.subtract.outer(position[:, 0], position[:, 0]))
         dx = np.minimum(dx, self.width-dx)
-        dy = np.subtract.outer(position[:, 1], position[:, 1])
+        dy = np.absolute(np.subtract.outer(position[:, 1], position[:, 1]))
         dy = np.minimum(dy, self.height-dy)
         distance = np.hypot(dx, dy)
 
@@ -234,7 +233,6 @@ if __name__ == '__main__':
     flock = Flock(n)
     collection = MarkerCollection(n)
     trace = None
-
 
     fig = plt.figure(figsize=(10, 10*height/width), facecolor="white")
     ax = fig.add_axes([0.0, 0.0, 1.0, 1.0], aspect=1, frameon=False)

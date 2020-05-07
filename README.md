@@ -14,6 +14,45 @@ The code is based on theoretical work by [Woojin Kim](https://wj-kim.com) and [F
 <!--. The details can be found in the paper: [*Spatiotemporal Persistent Homology for Dynamic Metric Spaces*](https://link.springer.com/article/10.1007/s00454-019-00168-w), published in Discrete & Computational Geometry, 2020.-->
 The code is authored by [Nate Clause](https://math.osu.edu/people/clause.15), a Math Ph.D. student at Ohio State, in collaboration with [Woojin Kim](https://wj-kim.com).
 
+## Generating DMSs from Boids model
+"boids_simulation.py" is code that uses a standard flocking boids model to generate DMSs, and is added to give the user an example of how to generate DMS, as well as to have easily-made DMS available to test with the other codes.
+This code has two sets of initial parameters (again, this can be changed at the top of main):
+
+```
+python boids_simulation.py [num_points] [separation_force] [alignment_force] [cohesion_force] [dmsfile]
+```
+
+or:
+
+```
+python boids_simulation.py [num_points] [separation_force] [separation_radius] [alignment_force] [alignment_radius] [cohesion_force] [cohesion_radius] [dmsfile]
+```
+
+The forces and radii are parameters that alter the motion of the boids based on the rules based on the rules of the model. For a general explanation of the flocking boids model, see the [Wikipedia](https://en.wikipedia.org/wiki/Boids). Then [dmsfile] is the filename that the DMS data is saved out to.
+
+The motion modeled in this scenario occurs on a 2-dimensional torus of width 500 units and height 250 units. The parameters should have the following ranges:
+
+0 < [num_points] < infinity
+
+0 <= [separation_force] < 10
+
+0 <= [separation_radius] < infinity
+
+0 <= [alignment_force] < 10
+
+0 <= [alignment_radius] < infinity
+
+0 <= [cohesion_force] < 10
+
+0 <= [cohesion_radius] < infinity
+
+We give a few remarks here. First, the number of points is the main factor deciding the runtime, so while we can have arbitrarily many points, the program can become very slow if we let the number of points go too high. Anything at 100 or fewer points should run just fine, more powerful infrastructures can handle hundreds of points (though for visual lag reasons, with more than 100 points, it is better to not show the plot as the program runs but instead to view the saved mp4 afterwards). 
+
+Next, the force coefficients can be 0, this simply means that force is playing no role in the simulation. Technically, these coefficients could be input arbitrarily large, but making them more than 10 can make the simulation quite unstable. It is best overall to keep all of these coefficients less than 5 for "smoothness" of the output.
+
+Lastly, all the radius parameters can be arbitrarily large, but there is no difference between having a radius parameter equal to the radius of the ambient space of motion and any larger parameter. With our current 500x250 window, this means making one of these parameters more than ~280 will yield no change from if it were 280. 
+
+
 ## Computing Spatiotemporal Betti-0 function
 <!--All of the codes are currently set up to be run from a command line, for example, the current approach to run "betti_generator.py" would be to enter command line or the terminal in a python IDE and write something such as:
 ```
@@ -45,44 +84,3 @@ There are currently two files codes which can be used to perform this task, "ero
 python same_size_erosion_distance.py [bettifile1] [bettifile2] 
 ```
 With this input, the code would compute the erosion distance of the two betti-0 functions and display this result.
-
-## Generating DMSs from Boids model
-"boids_simulation.py" is code that uses a standard flocking boids model to generate DMSs, and is added to give the user an example of how to generate DMS, as well as to have easily-made DMS available to test with the other codes.
-This code has two sets of initial parameters (again, this can be changed at the top of main):
-
-```
-python boids_simulation.py [num_points] [separation_force] [alignment_force] [cohesion_force] [dmsfile]
-```
-
-or:
-
-```
-python boids_simulation.py [num_points] [separation_force] [separation_radius] [alignment_force] [alignment_radius] [cohesion_force] [cohesion_radius] [dmsfile]
-```
-
-The forces and radii are parameters that alter the motion of the boids based on the rules based on the rules of the model. For a general explanation of the flocking boids model, see https://en.wikipedia.org/wiki/Boids. Then [dmsfile] is the filename that the DMS data is saved out to.
-
-The motion modeled in this scenario occurs on a 2-dimensional torus of width 500 units and height 250 units. The parameters should have the following ranges:
-
-0 < [num_points] < infinity
-
-0 <= [separation_force] < 10
-
-0 <= [separation_radius] < infinity
-
-0 <= [alignment_force] < 10
-
-0 <= [alignment_radius] < infinity
-
-0 <= [cohesion_force] < 10
-
-0 <= [cohesion_radius] < infinity
-
-We give a few remarks here. First, the number of points is the main factor deciding the runtime, so while we can have arbitrarily many points, the program can become very slow if we let the number of points go too high. Anything at 100 or fewer points should run just fine, more powerful infrastructures can handle hundreds of points (though for visual lag reasons, with more than 100 points, it is better to not show the plot as the program runs but instead to view the saved mp4 afterwards). 
-
-Next, the force coefficients can be 0, this simply means that force is playing no role in the simulation. Technically, these coefficients could be input arbitrarily large, but making them more than 10 can make the simulation quite unstable. It is best overall to keep all of these coefficients less than 5 for "smoothness" of the output.
-
-Lastly, all the radius parameters can be arbitrarily large, but there is no difference between having a radius parameter equal to the radius of the ambient space of motion and any larger parameter. With our current 500x250 window, this means making one of these parameters more than ~280 will yield no change from if it were 280. 
-
-
-

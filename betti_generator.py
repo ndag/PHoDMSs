@@ -47,15 +47,16 @@ def get_points(file, numpoints):
 
 if __name__ == '__main__':
 
-	if len(sys.argv) == 6:
+	if len(sys.argv) == 7:
 		position_file = str(sys.argv[1])
 		betti_file = str(sys.argv[2])
 		start_thresh = int(sys.argv[3])
 		end_thresh = int(sys.argv[4])
 		spacing = int(sys.argv[5])
+		time_samples = int(sys.argv[6])
 	else:
 		print('Please pass arguments:')
-		print('position filename, output filename, starting Rips threshold, ending Rips threshold, spacing')
+		print('position filename, output filename, starting Rips threshold, ending Rips threshold, spacing, time_samples')
 		exit()
 
 	points = []
@@ -74,7 +75,7 @@ if __name__ == '__main__':
 	thresholds = [i for i in range(start_thresh, end_thresh+1, spacing)]
 	times = [i for i in range(start_thresh,start_thresh+1+num_times*spacing,spacing)] 
 
-	useddists = [get_dist(points[i]) for i in range(0,num_times,50)]
+	useddists = [get_dist(points[i]) for i in range(0,num_times,int(num_times/(time_samples-1)))]
 	useddists = np.array(useddists)
 	bettiarray = np.zeros((len(thresholds),len(useddists),len(useddists)))
 	n = len(useddists)

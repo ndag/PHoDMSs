@@ -18,7 +18,7 @@ The code is authored by [Nate Clause](https://math.osu.edu/people/clause.15), a 
 **"boids_simulation.py"** generates DMSs on a **2-dimensional torus of width 500 units and height 250 units**, according to boids model. This code provides plenty of DMSs which can be useful for many different user's purposes.
 <!--This code is added to give the user an example of how to generate DMS, as well as to have easily-made DMS available to test with the other codes.
 -->
-This code has **two sets of initial parameters** (again, this can be changed at the top of main):
+This code has **two sets of initial parameters** (this can be changed at the top of main):
 
 ```
 python boids_simulation.py [num_points] [separation_force] [alignment_force] [cohesion_force] [dmsfile]

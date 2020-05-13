@@ -15,7 +15,7 @@ The code is based on theoretical work by [Woojin Kim](https://wj-kim.com) and [F
 The code is authored by [Nate Clause](https://math.osu.edu/people/clause.15), a Math Ph.D. student at Ohio State, in collaboration with [Woojin Kim](https://wj-kim.com).
 
 ## Generating DMSs on a torus
-<video src="behavior1_animation.mp4" width="320" height="200" controls preload></video>
+
 **"boids_simulation.py"** generates DMSs on a **2-dimensional torus of width 500 units and height 250 units**, according to boids model. This code provides plenty of DMSs which can be useful for many different user's purposes.
 <!--This code is added to give the user an example of how to generate DMS, as well as to have easily-made DMS available to test with the other codes.
 -->

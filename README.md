@@ -40,13 +40,13 @@ The forces and radii are parameters that alter the motion of the boids based on 
 0 <= [cohesion_force] < 10
 0 <= [cohesion_radius] < infinity-->
 
-**First**, the program can become slow if the number of points go too high. Anything at 100 or fewer points should run just fine, more powerful infrastructures can handle hundreds of points (though for visual lag reasons, with more than 100 points, it is better to not show the plot as the program runs but instead to view the saved mp4 afterwards).
+The program can become slow if the number of points go too high. **Anything at 100 or fewer points should run just fine**, more powerful infrastructures can handle hundreds of points (though for visual lag reasons, with more than 100 points, it is better to not show the plot as the program runs but instead to view the saved mp4 afterwards).
 <!--We give a few remarks. First, the number of points is the main factor deciding the runtime, so while we can have arbitrarily many points, the program can become very slow if we let the number of points go too high. Anything at 100 or fewer points should run just fine, more powerful infrastructures can handle hundreds of points (though for visual lag reasons, with more than 100 points, it is better to not show the plot as the program runs but instead to view the saved mp4 afterwards).--> 
 
-**Next**, the force coefficients can be 0, meaning that force is playing no role in the simulation. In contrast, making them more than 10 can make the simulation unstable. It is best overall to keep all of these coefficients less than 5 for "smoothness" of the output.
+**The force coefficients can be 0, meaning that force is playing no role in the simulation. In contrast, making them more than 10 can make the simulation unstable.** It is best overall to keep all of these coefficients less than 5 for "smoothness" of the output.
 <!--the force coefficients can be 0, this simply means that force is playing no role in the simulation. Technically, these coefficients could be input arbitrarily large, but making them more than 10 can make the simulation quite unstable. It is best overall to keep all of these coefficients less than 5 for "smoothness" of the output.-->
 
-**Lastly**, all the radius parameters can be arbitrarily large, but there is no difference between having a radius parameter equal to the radius of the ambient space of motion and any larger parameter. With our current **500x250** window, this means making one of these parameters more than ~280 will yield no change from if it were 280. 
+**All the radius parameters can be arbitrarily large, but there is no difference between having a radius parameter equal to the radius of the ambient space of motion and any larger parameter.** With our current **500x250** window, this means making one of these parameters more than ~280 will yield no change from if it were 280. 
 
 
 ## Computing Spatiotemporal Betti-0 function

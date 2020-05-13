@@ -14,9 +14,11 @@ The code is based on theoretical work by [Woojin Kim](https://wj-kim.com) and [F
 <!--. The details can be found in the paper: [*Spatiotemporal Persistent Homology for Dynamic Metric Spaces*](https://link.springer.com/article/10.1007/s00454-019-00168-w), published in Discrete & Computational Geometry, 2020.-->
 The code is authored by [Nate Clause](https://math.osu.edu/people/clause.15), a Math Ph.D. student at Ohio State, in collaboration with [Woojin Kim](https://wj-kim.com).
 
-## Generating DMSs from Boids model
-"boids_simulation.py" is code that uses a standard flocking boids model to generate DMSs, and is added to give the user an example of how to generate DMS, as well as to have easily-made DMS available to test with the other codes.
-This code has two sets of initial parameters (again, this can be changed at the top of main):
+## Generating DMSs on a torus
+**"boids_simulation.py"** is code that uses a standard flocking boids model to generate DMSs on a **2-dimensional torus of width 500 units and height 250 units**. This code provides plenty of DMSs that can be useful for many different purposes.
+<!--This code is added to give the user an example of how to generate DMS, as well as to have easily-made DMS available to test with the other codes.
+-->
+This code has **two sets of initial parameters** (again, this can be changed at the top of main):
 
 ```
 python boids_simulation.py [num_points] [separation_force] [alignment_force] [cohesion_force] [dmsfile]
@@ -30,7 +32,7 @@ python boids_simulation.py [num_points] [separation_force] [separation_radius] [
 
 The forces and radii are parameters that alter the motion of the boids based on the rules based on the rules of the model. For a general explanation of the flocking boids model, see the [Wikipedia](https://en.wikipedia.org/wiki/Boids). Then [dmsfile] is the filename that the DMS data is saved out to.
 
-The motion modeled in this scenario occurs on a 2-dimensional torus of width 500 units and height 250 units. The parameters should have the following ranges:
+The parameters should have the following ranges:
 
 0 < [num_points] < infinity
 

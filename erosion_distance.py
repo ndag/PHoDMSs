@@ -1,7 +1,7 @@
 import numpy as np
 import sys
 
-def erosion(f,tfx,tfy,tfz,g,tgx,tgy,tgz,spacing):
+def erosion(f,tfx,tfy,tfz,g,tgx,tgy,tgz,spacing,timew,scalew):
 	nt = tfx + tfy + tfz + tgx + tgy + tgz
 	newtimes = np.array(nt)
 	newtimes = np.unique(newtimes)
@@ -23,8 +23,8 @@ def erosion(f,tfx,tfy,tfz,g,tgx,tgy,tgz,spacing):
 	for i in range(len(ntx)):
 		for j in range(len(nty)):
 			for k in range(len(ntz)):
-				fshifts[i,j,k]=elementshift(newf,newg,i,j,k)
-				gshifts[i,j,k]=elementshift(newg,newf,i,j,k)
+				fshifts[i,j,k]=elementshift(newf,newg,i,j,k,timew,scalew)
+				gshifts[i,j,k]=elementshift(newg,newf,i,j,k,timew,scalew)
 		
 	needshifts = np.maximum(fshifts,gshifts)
 	d = np.amax(needshifts) * spacing
@@ -72,26 +72,27 @@ def expand3D(f, tfx, tfy, tfz, ntx, nty, ntz):
 	return newf
 
 
-def elementshift(f,g,i,j,k):
+def elementshift(f,g,i,j,k,timew,scalew):
 	[i1, j1, k1] = np.shape(f)
-	r = min([i1-i-1, j-1, k-1])
+	r = min([np.floor((i1-i-1)/scalew), np.floor((j-1)/timew), np.floor((k-1)/timew)])
 	r = max([r, 0])
+	r = int(r)
 	if f[i,j,k] >= g[i,j,k] or f[i,j,k] == 0:
 		return 0
-	if f[i,j,k] < g[i+r,j-r,k-r]:
+	if f[i,j,k] < g[i+(r*scalew),j-(r*timew),k-(r*timew)]:
 		return r+1
 	
 	l = 0
 	current = int(np.floor((r+l)/2))
 	while r-l > 1:
-		if f[i,j,k] >= g[i+current,j-current,k-current]:
+		if f[i,j,k] >= g[i+(current*scalew),j-(current*timew),k-(current*timew)]:
 			r = current
 			current = int(np.floor((r+l)/2))
 		else:
 			l = current
 			current = int(np.floor((r+l)/2))
 
-	if f[i,j,k] >= g[i+l,j-l,k-l]:
+	if f[i,j,k] >= g[i+(l*scalew),j-(l*timew),k-(l*timew)]:
 		return l
 	else:
 		return r
@@ -100,8 +101,15 @@ if __name__ == "__main__":
 	if len(sys.argv) == 3:
 		filename1 = sys.argv[1]
 		filename2 = sys.argv[2]
+		time_weight = 1
+		scale_weight = 1
+	elif len(sys.argv) == 5:
+		filename1 = sys.argv[1]
+		filename2 = sys.argv[2]
+		time_weight = int(sys.argv[3])
+		scale_weight = int(sys.argv[4])
 	else:
-		print('please input two filenames of betti-0 functions')
+		print('please input two filenames of betti-0 functions, or two filenames and integer weights for both time and scale')
 		exit()
 
 	with open(filename1, 'r') as f1:
@@ -135,5 +143,5 @@ if __name__ == "__main__":
 	F2 = np.loadtxt(filename2, skiprows=1)
 	F2 = F2.reshape((len(thresholds2),len(times2),len(times2)))
 	
-	print(erosion(F1,thresholds1,times1,times1,F2,thresholds2,times1,times1,spacing1))
+	print(erosion(F1,thresholds1,times1,times1,F2,thresholds2,times1,times1,spacing1,time_weight,scale_weight))
 

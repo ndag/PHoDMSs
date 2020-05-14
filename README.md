@@ -65,7 +65,7 @@ python betti_generator.py [dmsfile] [bettifile] 40 0 50 5
 ```
 All of these codes have portions at the top of main where the user can change the approach to how these functions are called/executed to another method as desired. Later, code will also be posted that exemplifies a larger-scale version with parallelization for generating Betti-0 functions as well as computing erosion distance between a large number of Betti-0 functions. -->
 
-"betti_generator.py" is code that takes in a DMS file and generates a Betti-0 function for that DMS. It currently has one set of initial parameters:
+"betti_generator.py" is code that takes in a DMS file and generates a Betti-0 function for that DMS. This code relies on the software package Dionysus 2 (https://mrzv.org/software/dionysus2/). The code currently has one set of initial parameters:
 
 ```
 python betti_generator.py [dmsfile] [bettifile] [start_threshold] [end_threshold] [spacing] [time_samples]

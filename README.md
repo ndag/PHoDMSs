@@ -16,8 +16,8 @@ The code is authored by [Nate Clause](https://math.osu.edu/people/clause.15), a 
 
 ## Generating DMSs on a torus
 <p align="center">
-<!--<kbd><img src="gif (1).gif" width="320" height="200" /></kbd>
-<kbd><img src="gif (5).gif" width="270" height="200" /></kbd>
+<!--<kbd><img src="gif (5).gif" width="320" height="200" /></kbd>
+<kbd><img src="gif (1).gif" width="270" height="200" /></kbd>
 <kbd><img src="gif (2).gif" width="200" height="200" /></kbd>
 <kbd><img src="gif (3).gif" width="300" height="200" /></kbd>-->
 <kbd><img src="gif (4).gif" width="430" height="200" /></kbd>

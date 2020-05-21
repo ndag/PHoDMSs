@@ -96,14 +96,14 @@ With the first input, the code would compute the erosion distance of the two Bet
 As an important note, the two Betti-0 functions can have different Rips threshold parameters used in their generation, but the spacing must be the same. For example, we could have one generated using Rips thresholds 0,5,10,...,50, and the other generated using 10,15,...,60, but we could not have one generated with thresholds 0,5,10,...,50, and the other generated with 0,7,14,...,70. Another important note regarding inputs is that the number of time samples used for generating the two Betti-0 functions being compared, the ([time_samples]) parameter in the code in the previous section, must be the same for the two functions.  
 
 ## Classification of DMSs
-Here we outline a classification experiment we carried out. We generated 500 DMSs arisen from 5 differnt parameter settings in Boid, a hundred from each setting. Each DMS starts from a random initial configuration. The 5 differnt parameter settings are:
+Here we outline a classification experiment we carried out. We generated 500 DMSs from the 5 differnt parameter settings below in Boid, a hundred from each setting. Each DMS consists of 40 points and starts from a random initial configuration.
 |  |  |
 | --- | --- |
-|**Setting 1**| 40 pts, separation 0, alignment 5, cohesion 0|
-|**Setting 2**| 40 pts, separation 0, alignment 2, cohesion 5|
-|**Setting 3**| 40 pts, separation 0, radius 0, alignment 1, radius 25, cohesion 2, radius 50|
-|**Setting 4**| 40 pts, separation 0, radius 0, alignment 1, radius 150, cohesion 1, radius 50|
-|**Setting 5**| 40 pts, time-varying parameters. Details are omitted (The behavior looks like the ).|
+|**Setting 1**| separation 0, alignment 5, cohesion 0|
+|**Setting 2**| separation 0, alignment 2, cohesion 5|
+|**Setting 3**| separation 0, radius 0, alignment 1, radius 25, cohesion 2, radius 50|
+|**Setting 4**| separation 0, radius 0, alignment 1, radius 150, cohesion 1, radius 50|
+|**Setting 5**| Time-varying parameters. Details are omitted (One instance is illustrated as the gif above).|
 
 We computed the Betti-0 functions of all the DMSs and computed pairwise erosion distances among these. We carried out the **Single Linkage Hierarchical Clustering** as well as the **Multidimensional Scaling**. The result is given below:
 

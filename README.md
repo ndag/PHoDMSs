@@ -94,3 +94,28 @@ python erosion_distance.py [bettifile1] [bettifile2] [time_weight] [scale_weight
 With the first input, the code would compute the erosion distance of the two Betti-0 functions and display this result. With the second input, the code would use the same Betti-0 functions, but changes the search direction for erosion distance. The default search direction is 1,1,1, but for instance with time_weight 2 and scale_weight 3, the search direction would be 3,2,2. What this means intuitively is that if one weight is smaller than the other, that parameter is going to have more influence/importance in the distance computed. For example, if the parameters were 1 for time_weight and 5 for scale_weight, than the resulting distance would depend much more on how the Betti-0 functions differed in the time dimensions than the scale dimension. One should be careful to not use scaling factors too large dependent on the size of the Betti-0 functions. For instance, if one had two 10-by-10-by-10 Betti-0 functions and used scaling weights of 11 in both parameters, then the only possible distances would be 0 or a maximum dependent on the spacing.
 
 As an important note, the two Betti-0 functions can have different Rips threshold parameters used in their generation, but the spacing must be the same. For example, we could have one generated using Rips thresholds 0,5,10,...,50, and the other generated using 10,15,...,60, but we could not have one generated with thresholds 0,5,10,...,50, and the other generated with 0,7,14,...,70. Another important note regarding inputs is that the number of time samples used for generating the two Betti-0 functions being compared, the ([time_samples]) parameter in the code in the previous section, must be the same for the two functions.  
+
+## Classification of DMSs
+Here we outline a classification experiment we carried out. We generated 500 DMSs arisen from 5 differnt parameter settings in Boid, a hundred from each setting. Each DMS starts from a random initial configuration. The 5 differnt parameter settings are:
+
+**Setting 1**: 40 pts, separation 0, alignment 5, cohesion 0
+**Setting 2**: 40 pts, separation 0, alignment 2, cohesion 5
+**Setting 3**: 40 pts, separation 0, radius 0, alignment 1, radius 25, cohesion 2, radius 50
+**Setting 4**: 40 pts, separation 0, radius 0, alignment 1, radius 150, cohesion 1, radius 50
+**Setting 5**: 40 pts, time-varying parameters. Details are omitted.
+
+We computed the Betti-0 functions of all the DMSs and computed pairwise erosion distances among these. We carried out the **Single Linkage Hierarchical Clustering** as well as the **Multidimensional Scaling**. The result is terrific as follows.
+
+
+
+
+
+
+
+
+
+Setting 1: Blue
+Setting 2: Red/Orange
+Setting 3: Yellow
+Setting 4: Purple
+Setting 5: Green

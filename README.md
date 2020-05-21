@@ -97,16 +97,13 @@ As an important note, the two Betti-0 functions can have different Rips threshol
 
 ## Classification of DMSs
 Here we outline a classification experiment we carried out. We generated 500 DMSs arisen from 5 differnt parameter settings in Boid, a hundred from each setting. Each DMS starts from a random initial configuration. The 5 differnt parameter settings are:
-
-**Setting 1**: 40 pts, separation 0, alignment 5, cohesion 0
-
-**Setting 2**: 40 pts, separation 0, alignment 2, cohesion 5
-
-**Setting 3**: 40 pts, separation 0, radius 0, alignment 1, radius 25, cohesion 2, radius 50
-
-**Setting 4**: 40 pts, separation 0, radius 0, alignment 1, radius 150, cohesion 1, radius 50
-
-**Setting 5**: 40 pts, time-varying parameters. Details are omitted (The behavior looks like the ).
+|  |  |
+| --- | --- |
+|**Setting 1**| 40 pts, separation 0, alignment 5, cohesion 0|
+|**Setting 2**| 40 pts, separation 0, alignment 2, cohesion 5|
+|**Setting 3**| 40 pts, separation 0, radius 0, alignment 1, radius 25, cohesion 2, radius 50|
+|**Setting 4**| 40 pts, separation 0, radius 0, alignment 1, radius 150, cohesion 1, radius 50|
+|**Setting 5**| 40 pts, time-varying parameters. Details are omitted (The behavior looks like the ).|
 
 We computed the Betti-0 functions of all the DMSs and computed pairwise erosion distances among these. We carried out the **Single Linkage Hierarchical Clustering** as well as the **Multidimensional Scaling**. The result is given below:
 

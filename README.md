@@ -108,7 +108,7 @@ Here we outline a classification experiment we carried out. We generated 500 DMS
 
 **Setting 5**: 40 pts, time-varying parameters. Details are omitted.
 
-We computed the Betti-0 functions of all the DMSs and computed pairwise erosion distances among these. We carried out the **Single Linkage Hierarchical Clustering** as well as the **Multidimensional Scaling**. The result is terrific as follows.
+We computed the Betti-0 functions of all the DMSs and computed pairwise erosion distances among these. We carried out the **Single Linkage Hierarchical Clustering** as well as the **Multidimensional Scaling**. The result is given below:
 
 | SLHC  | MDS |
 | ------------- | ------------- |

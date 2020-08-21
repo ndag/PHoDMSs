@@ -3,7 +3,7 @@
 A **dynamic metric space (DMS)** is a time series of distance functions over a fixed underlying set. Instance of DMSs include collective behaviors of animals (a flock of birds or a school of fish), and social networks in the human sphere.
 
 The code in this repository works to 
-1. Compute the **spatiotemporal persistent Betti-0 function** of **DMSs**, and in turn
+1. Compute the **spatiotemporal persistent Betti-0 function** and **Rank-Invariant** of **DMSs**, and in turn
 2. Quantify the dissimilarity between two DMSs, based on their **spatiotemporal persistent topology**. For this, we make use of a slight generalization of [the erosion distance](https://link.springer.com/article/10.1007/s41468-018-0012-6) by Amit Patel.
 
 In addtion, using this code, users can generate various DMSs according to [Boids model](https://en.wikipedia.org/wiki/Boids). Find real time simulations at the bottom of [this webpage](https://research.math.osu.edu/networks/formigrams/).
@@ -112,3 +112,27 @@ We computed the Betti-0 functions of all the DMSs and computed pairwise erosion 
 | <img src="boidsbetti0distgeqtime.jpg" width="450" height="230"/>  |  <img src="boidsbetti0mdsdistgeqtime.jpg" width="450" height="230"/> |
 
 In SLHC, **Blue**= Setting 1, **Orange**=Setting 2, **Yellow** = Setting 3, **Purple** = Setting 4, **Green** = Setting 5.
+
+
+## Rank Invariant
+
+"rank_generator.py" is code that takes in a DMS file and generates a rank invariant function for that DMS. This code relies on the software package Dionysus 2 (https://mrzv.org/software/dionysus2/). The code currently has one set of initial parameters:
+
+```
+python rank_generator.py [dmsfile] [rankfile] [start_threshold] [end_threshold] [spacing] [time_samples] [dimension]
+```
+
+[dmsfile] and [rankfile] are the names of the files containing the input DMS and the output rank invariant function, respectively. The threshold and spacing inputs determine the discretization values to be used for the Vietoris-Rips filtration when generating the rank invariant function. The dimension input determines which dimension the persistent homology is being computed with. Consider the following example input:
+
+```
+python rank_generator.py DMS1.txt Rank.txt 0 50 5 20 1
+```
+Then, for computing the rank invariant function of **DMS1.txt**, the Vietoris-Rips complexes will be computed at the thresholds  0 (=**start_threshold**), 5, 10, ..., 50 (=**end_threshold**) and the code will then compute the ranks between persistent homology inclusion maps using the persistent homology in dimension 1 (see paper cited in introduction for further theoretical details.) The rank invariant function will then be output to the file **Rank.txt**. Just as with Betti-0 functions, this input will use 20 evenly spaced time samples from the DMS. i.e. if the DMS consists of 100 points moving through 1000 timesteps, the rank invariant function will be based on 20 evenly spaced timesteps. Since rank invariant functions in this setting are 6-dimensional objects, instead of Betti-0 functions which are 3-dimensional objects, the runtime for generating rank invariants is correspondingly slower. To compensate for this, it is recommended to use a smaller number of Rips threshold parameters and time samples. As with the Betti-0 functions, the code is currently built so that the DMS file it reads in is a dynamic point cloud and then it computes the time series of distance matrices using Euclidean distance in the function "get_dist". This "get_dist" function is the one to change should the DMS be based on other metrics. In the future, additional functionality will be added so the user could input either a DMS as a dynamic point cloud or as a time series of distance matrices already. Of note is that the "boids_simulation.py" output is a dynamic point cloud, as the current "rank_generator.py" code is setup to handle.
+
+## Erosion Distance for the Rank Invariant
+
+"rank_erosion.py" is code that takes in two rank invariant function files and computes the erosion distance between them. The code has one set of initial parameters:
+```
+python rank_erosion.py [rankfile1] [rankfile2]
+```
+With this input, the code will compute the resulting erosion distance between the two rank invariant functions stored in **rankfile1** and **rankfile2**.

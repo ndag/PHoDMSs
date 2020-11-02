@@ -85,10 +85,10 @@ As another important note, the code does not force the user to make the Rips thr
 To compute the erosion distance between two Betti-0 functions, use the code "erosion_distance.py". The code can be run in two ways:
 
 ```
-python erosion_distance.py [bettifile1] [bettifile2] 
+python betti0_erosion_distance.py [bettifile1] [bettifile2] 
 ```
 ```
-python erosion_distance.py [bettifile1] [bettifile2] [time_weight] [scale_weight]
+python betti0_erosion_distance.py [bettifile1] [bettifile2] [time_weight] [scale_weight]
 ```
 
 With the first input, the code would compute the erosion distance of the two Betti-0 functions and display this result. With the second input, the code would use the same Betti-0 functions, but changes the search direction for erosion distance. The default search direction is 1,1,1, but for instance with time_weight 2 and scale_weight 3, the search direction would be 3,2,2. What this means intuitively is that if one weight is smaller than the other, that parameter is going to have more influence/importance in the distance computed. For example, if the parameters were 1 for time_weight and 5 for scale_weight, than the resulting distance would depend much more on how the Betti-0 functions differed in the time dimensions than the scale dimension. One should be careful to not use scaling factors too large dependent on the size of the Betti-0 functions. For instance, if one had two 10-by-10-by-10 Betti-0 functions and used scaling weights of 11 in both parameters, then the only possible distances would be 0 or a maximum dependent on the spacing.

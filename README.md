@@ -155,6 +155,6 @@ The rankfiles are formatted as follows: the first line contains information abou
 3 4 4 5 -1 \
 4 4 5 -1 -1 \
 4 4 -1 -1 -1 \
-4 -1 -1 -1 -1 \
+4 -1 -1 -1 -1 
 
 If this file were called "rankfile1", then this corresponds to a 2D module sampled at spacing 2 from 0 to 8. In the standard rank invariant approach to generating these modules, if PH is the 1-dimensional persistence module, then the upper left entry of the module (2) would correspond to the rank from PH(0) to PH(8). Similarly, 4 in the bottom left would correspond to the rank from PH(0) to PH(0), and 5 in the upper right would correspond to the rank from PH(8) to PH(8).

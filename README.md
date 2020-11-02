@@ -150,11 +150,11 @@ Here, rankfile1 and rankfile2 contain the information of the modules. The x_weig
 
 The rankfiles are formatted as follows: the first line contains information about the sampling of the module. What this means is that the module is stored in a discretized manner, and the first line must contain 3 values about this discretization. In order, they are the start value, end value, and spacing of this discretization. Then the remaining lines are the module itself, in a rectangular matrix form. For the standard setting of 2D modules representing rank invariants of 1-dimensional persistence modules, we have that this rank invariant really lies in the upper half plane. To deal with this, please set all the values in the bottom right of the matrix to equal -1 in the text file. For an example, one potential rank invariant file that would be accepted would read as follows:
 
-0 8 2
-2 3 4 5 5
-3 4 4 5 -1
-4 4 5 -1 -1
-4 4 -1 -1 -1
-4 -1 -1 -1 -1
+0 8 2 
+2 3 4 5 5 
+3 4 4 5 -1 
+4 4 5 -1 -1 
+4 4 -1 -1 -1 
+4 -1 -1 -1 -1 
 
 If this file were called "rankfile1", then this corresponds to a 2D module sampled at spacing 2 from 0 to 8. In the standard rank invariant approach to generating these modules, if PH is the 1-dimensional persistence module, then the upper left entry of the module (2) would correspond to the rank from PH(0) to PH(8). Similarly, 4 in the bottom left would correspond to the rank from PH(0) to PH(0), and 5 in the upper right would correspond to the rank from PH(8) to PH(8).

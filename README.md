@@ -11,7 +11,7 @@ In addtion, using this code, users can generate various DMSs according to [Boids
 
 Also,   
 
-3. Irrespective of DMSs, one can compute the erosion distance between (the rank invariants of) 1-parameter persistence modules (Added on Nov.8.2020); see the last paragraph.
+3. Irrespective of DMSs, one can compute **the erosion distance between (the rank invariants of) 1-D persistence modules** (Added on Nov.8.2020); see **(Independent section) Erosion Distance between 1-D Persistence Modules** below.
 
 <!--This code fill out the computational pipeline of taking in a dynamic metric space (DMS) generating a spatiotemporal Betti-0 function for it, and then compute erosion distance between these Betti-0 functions.--> 
 The code is based on theoretical work by [Woojin Kim](https://wj-kim.com) and [Facundo Mémoli](https://people.math.osu.edu/memolitechera.1/) at Ohio State (see [*Spatiotemporal Persistent Homology for Dynamic Metric Spaces*](https://link.springer.com/article/10.1007/s00454-019-00168-w), published in Discrete & Computational Geometry, 2020).
@@ -152,7 +152,7 @@ python erosion_distance2D.py [rankfile1] [rankfile2]
 An examplary format of [rankfile1] or [rankfile2] is given below: 
 
 <!--The 1st line contains information about the sampling of the input persistence module M over the real line: What this means is that M is stored in a discretized manner, and the 1st line must contain 3 values about this discretization. In order, they are the start value, end value, and spacing of this discretization. Then the remaining lines are the module itself, in a rectangular matrix form. For the standard setting of 2D modules representing rank invariants of 1-dimensional persistence modules, we have that this rank invariant really lies in the upper half plane. To deal with this, please set all the values in the bottom right of the matrix to equal -1 in the text file. For an example, one potential rank invariant file that would be accepted would read as follows:-->
-
+  
 0 8 2 \
 2 3 4 5 5 \
 3 4 4 5 -1 \
@@ -160,7 +160,7 @@ An examplary format of [rankfile1] or [rankfile2] is given below:
 4 4 -1 -1 -1 \
 4 -1 -1 -1 -1 
 
-1. The first line contains discretized information about the input persistence module M over a finite real interval. In the above example, M is defined over the real interval [0,8], and, by setting the sample spacing 2, we only consider M restricted to 0,2,4,6,8. In other words, the three values are the start value (0), end value (8) of M, and spacing of sampling (2). 
+1. The first line contains discretized information about the input persistence module M over a finite real interval. In the above example, M is defined over the real interval [0,8] and, by setting the sample spacing 2, we only consider M restricted to 0,2,4,6,8. In other words, the three values are the start value (0), end value (8) of M, and spacing of sampling (2). 
 2. The remaining lines encode the rank invariant in a rectangular matrix form; assume that there are k samples from M (in the above example, <img src="https://render.githubusercontent.com/render/math?math=k=5= 1">+ <img src="https://render.githubusercontent.com/render/math?math=(8-0)/2">)). For <img src="https://render.githubusercontent.com/render/math?math=i \geq j">, the <img src="https://render.githubusercontent.com/render/math?math=(i,j)">-entry is the rank of map M(<img src="https://render.githubusercontent.com/render/math?math=j">-th sample -> <img src="https://render.githubusercontent.com/render/math?math=k-i">+<img src="https://render.githubusercontent.com/render/math?math=1">-th sample). For example, the (1,1)-entry 2 is the rank of M(<img src="https://render.githubusercontent.com/render/math?math=0\leq 8">), and the (5,1)-entry 4 is the rank of space M(0).  
 3. Always set all the values below the main diagonal line to equal -1. 
 

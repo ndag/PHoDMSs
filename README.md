@@ -1,10 +1,14 @@
-# Spatiotemporal Persistent Homology for Dynamic Data
+# Spatiotemporal Persistent Homology for Dynamic Data & Erosion Distance between Rank Invariants
 
 A **dynamic metric space (DMS)** is a time series of distance functions over a fixed underlying set. Instance of DMSs include collective behaviors of animals (a flock of birds or a school of fish), and social networks in the human sphere.
 
 The code in this repository works to 
 1. Compute the **spatiotemporal persistent Betti-0 function** and **Rank-Invariant** of **DMSs**, and in turn
 2. Quantify the dissimilarity between two DMSs, based on their **spatiotemporal persistent topology**. For this, we make use of a slight generalization of [the erosion distance](https://link.springer.com/article/10.1007/s41468-018-0012-6) by Amit Patel.
+
+Also,   
+
+3. Irrespective of DMSs, one can compute the erosion distance between (the rank invariants of) 1-parameter persistence modules (Added on Nov.8.2020).
 
 In addtion, using this code, users can generate various DMSs according to [Boids model](https://en.wikipedia.org/wiki/Boids). Find real time simulations at the bottom of [this webpage](https://research.math.osu.edu/networks/formigrams/).
 

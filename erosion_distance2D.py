@@ -13,6 +13,10 @@ def erosion(f, tfx, tfy, g, tgx, tgy, spacing, xw, yw):
     f[f == -1] = np.inf
     g[g == -1] = np.inf
 
+    a = xw
+    xw = -yw
+    yw = a
+
     for i in range(len(ntx)-1):
         if ntx[i+1]-ntx[i] != spacing:
             print('Please generate modules whose discretization grids are not offset by anything other than a multiple of the spacing.')
@@ -77,33 +81,46 @@ def expand2D(f, tfx, tfy, ntx, nty):
 
 def elementshift(f, g, i2, j2, xw, yw):
     [i1, j1] = np.shape(f)
-    r = min([np.floor(i2), np.floor(j2)])
+
+    if xw<0:
+        xr = i2
+    elif xw>=0:
+        xr = i1-i2-1
+    if yw<0:
+        yr = j2
+    elif yw>=0:
+        yr = j1-j2-1
+
+    r = min([np.floor(xr/abs(xw)), np.floor(yr/abs(yw))])
     r = max([r, 0])
     r = int(r)
 
     if f[i2, j2] >= g[i2, j2]:
         return 0
-    if f[i2, j2] < g[i2 + (r * xw), j2 - (r * yw)]:
+    if f[i2, j2] < g[i2 + (r * xw), j2 + (r * yw)]:
         return r + 1
 
     l = 0
     current = int(np.floor((r + l) / 2))
     while r - l > 1:
-        if f[i2, j2] >= g[i2 + (current * xw), j2 - (current * yw)]:
+        if f[i2, j2] >= g[i2 + (current * xw), j2 + (current * yw)]:
             r = current
             current = int(np.floor((r + l) / 2))
         else:
             l = current
             current = int(np.floor((r + l) / 2))
 
-    if f[i2, j2] >= g[i2 + (l * xw), j2 - (l * yw)]:
+    if f[i2, j2] >= g[i2 + (l * xw), j2 + (l * yw)]:
         return l
     else:
         return r
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 3:
+    if len(sys.argv) != 3 and len(sys.argv) != 5:
+        print('Please input two filenames of 2D modules, or two filenames and integer weights for x and y values of search direction. (Default is x=-1, y=1)')
+        exit()
+    elif len(sys.argv) == 3:
         filename1 = sys.argv[1]
         filename2 = sys.argv[2]
         x_weight = -1
@@ -113,9 +130,8 @@ if __name__ == "__main__":
         filename2 = sys.argv[2]
         x_weight = int(sys.argv[3])
         y_weight = int(sys.argv[4])
-    else:
-        print('Please input two filenames of 2D modules, or two filenames and integer weights for x and y values of search direction. (Default is x=-1, y=1)')
-        exit()
+
+
 
     with open(filename1, 'r') as f1:
         firstline1 = f1.readline()

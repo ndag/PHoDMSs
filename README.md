@@ -1,7 +1,12 @@
 # Spatiotemporal Persistent Homology for Dynamic Data &
 # Erosion Distance between Rank Invariants
 
-A **dynamic metric space (DMS)** is a time series of distance functions over a fixed underlying set. Instance of DMSs include collective behaviors of animals (a flock of birds or a school of fish), and social networks in the human sphere.
+A **dynamic metric space (DMS)** is a time series of distance functions over a fixed underlying set. Instance of DMSs include collective behaviors of animals (a flock of birds or a school of fish), and social networks in the human sphere. Here is one example of a collective flocking behavior of birds from the Rio Grande:
+
+<p align="center">
+<!--<kbd><img src="rio-grande-birds (1).gif" width="320" height="200" /></kbd>-->
+<kbd><img src="rio-grande-birds (1).gif" width="430" height="200" /></kbd>
+</p>
 
 The code in this repository works to 
 1. Compute the **spatiotemporal persistent Betti-0 function** and **Rank-Invariant** of **DMSs**, and in turn

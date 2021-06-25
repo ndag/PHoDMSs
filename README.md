@@ -1,7 +1,7 @@
 # Spatiotemporal Persistent Homology for Dynamic Data &
 # Erosion Distance between Rank Invariants
 
-A **dynamic metric space (DMS)** is a time series of distance functions over a fixed underlying set. Instance of DMSs include collective behaviors of animals (a flock of birds or a school of fish), and social networks in the human sphere. Here is one example of a collective flocking behavior of birds from the Rio Grande:
+A **dynamic metric space (DMS)** is a time series of distance functions over a fixed underlying set. Instance of DMSs include collective behaviors of animals (a flock of birds or a school of fish), and social networks in the human sphere. Here is one example of a collective flocking behavior of birds from the Rio Grande (video captured by Facundo Mémoli):
 
 <p align="center">
 <!--<kbd><img src="rio-grande-birds (1).gif" width="320" height="200" /></kbd>-->
